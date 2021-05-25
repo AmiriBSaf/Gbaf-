@@ -1,8 +1,9 @@
 <?php
 session_start();
 
+
 try{
-    $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e)
@@ -19,7 +20,7 @@ if(isset($_POST['formconnexion'])) {
        $requser = $bdd->prepare("SELECT * FROM inscription WHERE nom = ? AND motdepasse = ?");
        $requser->execute(array($nomconnect, $mdpconnect));
        $userexist = $requser->rowCount();
-       echo $userexist;
+      
        if($userexist == 1) {
         $userinfo = $requser->fetch();
         $_SESSION['id'] = $userinfo['id'];
@@ -27,7 +28,7 @@ if(isset($_POST['formconnexion'])) {
         $_SESSION['prénom'] = $userinfo['prenom'];
         $_SESSION['nomuser'] = $userinfo['nomuser'];
         $_SESSION['mail'] = $userinfo['mail'];
-          header("Location: accueil.php?id=".$_SESSION['id']);
+          header("Location: index.php?id=".$_SESSION['id']);
        } else {
           $erreur = "Mauvais mail ou mot de passe !";
        }

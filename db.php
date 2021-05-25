@@ -1,10 +1,9 @@
 <?php
 
-session_start();
 
 
 try{
-    $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e)
@@ -30,7 +29,7 @@ catch (Exception $e)
                     $insertmbr->execute(array($nom, $prénom, $nomuser, $mail, $mdp, $mdp2, $question, $reponse)); 
                     $_SESSION['nom'] = $nom;
                     $_SESSION['prénom'] = $prénom;
-                    header('Location: accueil.php');
+                    header('Location: index.php');
                 
             }
             else {
@@ -57,7 +56,7 @@ if( isset($_POST["formconnexion"])) {
             $_SESSION['nom'] = $nom;
             $_SESSION['mdp'] = $mdp;
             $_SESSION['id'] = $requser->fetch()['id'];
-            header('Location:accueil.php');
+            header('Location:index.php');
         }
         else {
             echo " Mauvais identifiant ou mot de passe !";

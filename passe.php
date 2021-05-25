@@ -3,8 +3,9 @@
 session_start();
 
 
+
 try{
-    $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e)
@@ -23,17 +24,20 @@ if (isset($_POST['forgetpw'])) {
             $selectuser = $bdd->prepare ("SELECT * FROM inscription WHERE nomuser= ? ");
             $selectuser->execute(array($nomuser));
             $user=$selectuser->fetch();
-            echo"Votre Question de securité ne corresponde pas !!!";
             if($question == $user['question'] && $reponse ==$user['reponse']) {
                 if($_POST['mdp'] == $_POST['mdp2']) {
                     $insertmdp = $bdd->prepare("UPDATE inscription Set motdepasse= ? WHERE nomuser = ?");
                     $insertmdp->execute(array($mdp, $nomuser)); 
                     $insertmdp = $bdd->prepare("UPDATE inscription Set motdepasse2= ? WHERE nomuser = ?");
                     $insertmdp->execute(array($mdp2, $nomuser));
-                    header("Location:Connexion.php");
+                } else {
+                    echo"Votre Question de securité ne corresponde pas !!!";
                 }
             }
         } 
 }
+header('Location:connexion.php');
+
+?>
 
 

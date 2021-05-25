@@ -1,8 +1,11 @@
 <?php
 session_start();
+if(!isset($_SESSION['nom'])){
+    header('Location: connexion.php');
+    }
 try
 {
-	$bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    
 }
@@ -48,7 +51,7 @@ catch (Exception $e)
 <section>
     
     <img src="formation_co.png" id="formation_logo" alt="logo"/>
-    <!--<a href="accueil.php" style="color:#fff"><i class="fas fa-undo-alt"></i></a>-->
+    <!--<a href="index.php" style="color:#fff"><i class="fas fa-undo-alt"></i></a>-->
         <h2>FORMATION & CO</h2>
     <hr>
     <div class = "formation_text">
@@ -79,7 +82,7 @@ catch (Exception $e)
             <?php
             try
             {
-                $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+                $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                
             }

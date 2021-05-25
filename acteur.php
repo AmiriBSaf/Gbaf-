@@ -1,8 +1,11 @@
 <?php
 session_start();
+if(!isset($_SESSION['nom'])){
+    header('Location: connexion.php');
+    }
 try
 {
-	$bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e)
@@ -46,7 +49,7 @@ $dislikes = $dislikes->rowCount();
     <header class = "infos">
         <img src="logo.jpg"  id = "logo" alt="page-logo">
         <nav>
-        <a href="accueil.php" style="color:#fff"><i class="fas fa-long-arrow-alt-left"></i></a>
+        <a href="index.php" style="color:#fff"><i class="fas fa-long-arrow-alt-left"></i></a>
             <?php if(isset($_SESSION['nom'])): ?>
                 <h4><?php echo $_SESSION['nom'] ?>
                 <?php endif ?>
@@ -60,7 +63,7 @@ $dislikes = $dislikes->rowCount();
 <section>
     
     <img src="<?php echo $acteur["image"]; ?>" id="formation_logo" alt="logo"/>
-    <!--<a href="accueil.php" style="color:#fff"><i class="fas fa-undo-alt"></i></a>-->
+    <!--<a href="index.php" style="color:#fff"><i class="fas fa-undo-alt"></i></a>-->
         <h2><?php echo $acteur["nom"]; ?></h2>
     <hr>
     <div class = "formation_text">
@@ -80,7 +83,7 @@ $dislikes = $dislikes->rowCount();
             <?php
             try
             {
-                $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+                $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch (Exception $e)

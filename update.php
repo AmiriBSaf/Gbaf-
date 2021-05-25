@@ -1,8 +1,9 @@
 <?php
 session_start(); 
 
+
 try{
-    $bdd = new PDO('mysql:host=test.test;dbname=gbaf;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=id16887953_gbaf;charset=utf8', 'id16887953_safia', 'qIV~Y^_8i_7_/+4L');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e)
@@ -37,7 +38,7 @@ if(isset($_POST['update'])) {
         $mdp = sha1($_POST['newmdp1']);
         $mdp2 = sha1($_POST['newmdp2']);
 
-        if($newmdp == $newmdp2) {
+        if($mdp == $mdp2) {
             $insertmdp = $bdd->prepare("UPDATE inscription SET motdepasse = ? WHERE id = ?");
             $insertmdp->execute(array($mdp, $_SESSION['id']));
             $insertmdp = $bdd->prepare("UPDATE inscription SET motdepasse2 = ? WHERE id = ?");
