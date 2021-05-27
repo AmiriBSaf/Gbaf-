@@ -42,7 +42,7 @@ if(isset($_GET['type'],/*$_GET['id'],*/$_GET['acteurid']) AND !empty($_GET['type
         $reqdislike->execute(array($acteurid,$userId));
             }
         }
-        header('Location:http://test.test/acteur.php?acteurid='.$acteurid);
+        header('Location:https://gbaf-bsaf.000webhostapp.com/acteur.php?acteurid='.$acteurid);
     }    
 }   
 
