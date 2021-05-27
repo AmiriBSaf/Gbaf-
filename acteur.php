@@ -27,7 +27,9 @@ if(isset($_GET['acteurid']) AND !empty($_GET['acteurid'])) {
             $ins = $bdd->prepare('INSERT INTO comments (userId, messages, acteurid, datecomment) VALUES (?,?,?,NOW())');
             $ins->execute(array($_SESSION['id'],$message,$acteurid));
         }
-    }  
+    }  else {
+        echo "Rédiger votre commentaire !.."
+    }
 }   
 $likes = $bdd->prepare('SELECT id FROM likes WHERE acteurid = ?');
 $likes->execute(array($acteurid));
